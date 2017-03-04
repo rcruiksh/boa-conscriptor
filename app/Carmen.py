@@ -17,7 +17,7 @@ def adjDirection(headPos,bodyPos):
             return 'left';
 
 
-def checkBody(grid, directions):
+def checkBody(directions):
     directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
 
 
