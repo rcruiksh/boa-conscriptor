@@ -14,7 +14,7 @@ def adjDirection(headPos,bodyPos):
         if(headPos[0] - bodyPos[0] < 0): #if body is to the right of head
             return 'right'; #right is to be removed from directions list
         else:
-            return 'left';
+            return 'left'; #left is to be removed from directions list
 
 
 def checkBody(directions):
