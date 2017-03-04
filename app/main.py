@@ -23,6 +23,9 @@ def creategrid(data):
         grid[snakes['coords'][0]][snakes['coords'][1]] = HEADS
     return grid
 
+
+
+
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
@@ -66,6 +69,6 @@ def move():
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
 if __name__ == '__main__':
-    bottle.run(application, host=os.getenv('IP', '192.168.0.28'), port=os.getenv('PORT', '4000'))
+    bottle.run(application, host=os.getenv('IP', '0.0.0.0'), port=os.getenv('PORT', '8080'))
     
     #comment
