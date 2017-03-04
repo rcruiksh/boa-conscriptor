@@ -30,9 +30,10 @@ def findSafeFood(grid, data):
         if closestSnake == data['you']:
             meals.append[eats]
 
+    sort(meals, key = findDistance)
     return meals
 
 def findDistance(grid, food, head):
-    dx = food[0] - head[0]
-    dy = food[1] - head[1]
+    dx = abs(food[0] - head[0])
+    dy = abs(food[1] - head[1])
     return dx + dy
