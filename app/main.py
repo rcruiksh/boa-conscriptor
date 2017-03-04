@@ -131,7 +131,7 @@ def start():
         'color': '#0000FF',
         'taunt': 'Conscript',
         #'head_url': head_url,
-        'name': 'Boa-Conscriptor'
+        'name': 'Boa-Conscriptor',
         'head_type': "shades",
         'tail-type': "fat-rattle"
         })
