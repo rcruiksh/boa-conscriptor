@@ -31,13 +31,13 @@ def checkBody(directions):
     directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
     adjCoords = adjCoords(ourSnake);
     i = 0;
-    if (adjCoords[0] in ourSnake):
+    if (adjCoords[0] in ourSnake and directions.length > 0):
         directions.remove('right');
-    if (adjCoords[1] in ourSnake):
+    if (adjCoords[1] in ourSnake and directions.length > 0):
         directions.remove('left');
-    if (adjCoords[2] in ourSnake):
+    if (adjCoords[2] in ourSnake and directions.length > 0):
         directions.remove('down');
-    if (adjCoords[3] in ourSnake):
+    if (adjCoords[3] in ourSnake and directions.length > 0):
         directions.remove('up');
 
 def firstCheck(directions):
