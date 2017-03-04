@@ -20,4 +20,12 @@ def adjDirection(headPos,bodyPos):
 def checkBody(directions):
     directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
 
+def firstCheck(directions):
+    checkBody();
+    checkWall();
+    checkSnakes();
+    if(directions.length==1):
+        return directions[0];
+    else:
+        return directions;
 
