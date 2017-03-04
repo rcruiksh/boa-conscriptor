@@ -33,7 +33,7 @@ def adjDirection(headPos,bodyPos):
 #THIS FUNCTION RETURNS A LIST OF COORDINATES COORESPONDING TO DIRECTIONS
 #ORDER: right, left, down, up.
 def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra snake body
-    headPos = ourSnake[0];
+    headPos = ourSnake['coords'][0];
     x = headPos[0];
     y = headPos[1];
     
