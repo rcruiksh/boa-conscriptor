@@ -2,7 +2,7 @@ import bottle
 import os
 import random
 import math
-#import king_codera.py
+import king_codera.py
 
 FOOD = 1
 WALL = 2
@@ -11,11 +11,6 @@ BODIES = 4
 TAILS = 5
 EMPTY = 0
 
-<<<<<<< HEAD
-=======
-#def checkBody(grid, directions):
-    
->>>>>>> 794904c09029b0acc9f7e77ef1a1524b6ab7d418
 
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
@@ -63,9 +58,8 @@ def start():
 def move():
     data = bottle.request.json
 
+    # TODO: Do things with data
     directions = ['up', 'down', 'left', 'right']
-    checkBody();
-    
 
     return {
         'move': 'down',
