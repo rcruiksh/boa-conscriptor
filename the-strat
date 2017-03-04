@@ -22,3 +22,11 @@ Step 4: closest
 Step 5: circle food until low health then eat
 Step 6: safe food
 
+INFORMATION WE HAVE
+-food array
+-game id
+-height
+-width
+-array of snakes
+-current turn
+-your unique id
