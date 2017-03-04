@@ -2,7 +2,10 @@
 
 hello richard
 
+<<<<<<< HEAD
 I love how easy this is to use.
+
+:^)
 
 A simple [BattleSnake AI](http://battlesnake.io) written in Python. 
 
