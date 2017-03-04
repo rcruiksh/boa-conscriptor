@@ -4,6 +4,24 @@ import random
 import math
 import king_codera.py
 
+FOOD = 1
+WALL = 2
+HEADS = 3
+BODIES = 4
+TAILS = 5
+EMPTY = 0
+
+def creategrid(data):
+    grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
+    #FOOD
+    for eats in data['food']:
+        grid[eats[0]][eats[1]] = FOOD
+    
+    for snakes in data['snakes']:
+        for pts in snakes['coords']:
+            grid[pts[0]][pts[1]] = BODIES
+        grid[snakes['coords'][0]][snakes['coords'][1]] = HEADS
+    return grid
 
 @bottle.route('/static/<path:path>')
 def static(path):
