@@ -114,20 +114,20 @@ def checkBody(directions, ourSnake):
     i = 0
     if (len(directions) == 1):
         return
-    else:
-        if (adjBlocks[0] in ourSnake['coords']):
-            if 'right' in directions:
-                directions.remove('right')
-        if (adjBlocks[1] in ourSnake['coords']):
-            if 'left' in directions:
-                directions.remove('left')
-        if (adjBlocks[2] in ourSnake['coords']):
-            if 'down' in directions:
-                directions.remove('down')
-        if (adjBlocks[3] in ourSnake['coords']):
-            if 'up' in directions:
-                directions.remove('up')
-        return directions
+
+    elif (adjBlocks[0] in ourSnake['coords'] and len(directions)>1):
+        if 'right' in directions:
+            directions.remove('right')
+    elif (adjBlocks[1] in ourSnake['coords'] and len(directions)>1):
+        if 'left' in directions:
+            directions.remove('left')
+    elif (adjBlocks[2] in ourSnake['coords'] and len(directions)>1):
+        if 'down' in directions:
+            directions.remove('down')
+    elif (adjBlocks[3] in ourSnake['coords'] and len(directions)>1):
+        if 'up' in directions:
+            directions.remove('up')
+    return directions
         
 def checkWall(ourSnake, board_height, board_width, directions):
     no_gos = adjCoords(ourSnake) #right, left, down, up
@@ -140,13 +140,13 @@ def checkWall(ourSnake, board_height, board_width, directions):
     if (len(directions) == 1):
         return
     else:
-        if 0 in L and 'right' in directions:
+        if 0 in L and 'right' in directions and len(directions)>1:
             directions.remove('right')
-        if 1 in L and 'left' in directions:
+        if 1 in L and 'left' in directions and len(directions)>1:
             directions.remove('left')
-        if 2 in L and 'down' in directions:
+        if 2 in L and 'down' in directions and len(directions)>1:
             directions.remove('down')
-        if 3 in L and 'up' in directions:
+        if 3 in L and 'up' in directions and len(directions)>1:
             directions.remove('up')
         return directions
         
