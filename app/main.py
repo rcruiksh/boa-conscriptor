@@ -7,6 +7,12 @@ import random
 def static(path):
     return bottle.static_file(path, root='static/')
 
+@bottle.get('/')
+def index():
+    return {
+        "Hello World": ""
+    }
+
 
 @bottle.post('/start')
 def start():
