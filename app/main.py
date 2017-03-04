@@ -106,7 +106,7 @@ def static(path):
 
 @bottle.get('/')
 def index():
-    return {
+    return{
         "Hello World": ""
     }
 
@@ -136,7 +136,7 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    grid, ourSnake = creategrid(data)
+    #grid, ourSnake = creategrid(data)
 
     directions = ['up', 'down', 'left', 'right']
     
