@@ -11,6 +11,13 @@ BODIES = 4
 TAILS = 5
 EMPTY = 0
 
+#Will move the snake towards the closest safe food
+#covers the x displacement first followed by the y
+#Returns the move direction that should be output my move
+#Input: Grid - current grid setup
+#       moves - list of allowed move direction
+#       ourSnake - list of ourSnake coordinates
+#       data - data
 def approachFood(grid, moves, ourSnake, data):
     eats = findSafeFood(grid, data)
     if len(eats) == 0:
