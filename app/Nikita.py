@@ -28,9 +28,9 @@ def findSafeFood(grid, data):
                 closestSnake = data['snakes']['id']
         
         if closestSnake == data['you']:
-            meals.append[eats]
+            meals.append(eats)
 
-    sort(meals, key = findDistance)
+    sort(meals, key = findDistance) #There's almost no way in hell that this should work
     return meals
 
 #TODO: Take other snake bodies into account

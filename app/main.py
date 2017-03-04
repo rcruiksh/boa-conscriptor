@@ -120,6 +120,7 @@ def index():
 
 @app.route('/start', methods=["POST"])
 def start():
+<<<<<<< HEAD
     data = request.get_json()
     game_id = data['game_id']
     board_width = ['board_width']
@@ -133,9 +134,56 @@ def start():
         #'head_url': head_url,
         'name': 'Boa-Conscriptor'
         })
+=======
+<<<<<<< HEAD
+    data = bottle.request.json
+    game_id = data['game_id']
+    board_width = data['width']
+    board_height = data['height']
+
+    head_url = '%s://%s/static/head.png' % (
+        bottle.request.urlparts.scheme,
+        bottle.request.urlparts.netloc
+    )
+
+    # TODO: Do things with data
+
+    return {
+        'color': '#00FF00',
+        'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
+        'head_url': head_url,
+        'name': 'BoaConSCRIPTOR'
+        'head_type': "shades",
+        'tail-type': "fat-rattle"
+    }
+
+
+@bottle.post('/move')
+=======
+#    data = bottle.request.json
+#    game_id = data['game_id']
+#    board_width = data['width']
+#    board_height = data['height']
+#
+#    head_url = '%s://%s/static/head.png' % (
+#        bottle.request.urlparts.scheme,
+#        bottle.request.urlparts.netloc
+#    )
+#
+#    # TODO: Do things with data
+#
+#    return {
+#        'color': '#00FF00',
+#        'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
+#        'head_url': head_url,
+#        'name': 'BoaConSCRIPTOR'
+#    }
+    return json.dumps({"hello": "world"})
+>>>>>>> 70c0b7c796af82b61f1062fa9c3a8547789c0f64
 
 
 @app.route('/move', methods=["POST"])
+>>>>>>> 94f4ae2116e1b6238d506cc2eedaca1f25693552
 def move():
     data = request.get_json()
 
