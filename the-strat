@@ -3,6 +3,11 @@ use case switches
 
 LIST OF 4 DIRECTIONS
 functions remove direction based on priority
+1. don't run into yourself
+2. don't run into walls
+3. don't run into snakes
+
+if list count==1 execute that move
 
 CASES:
 
