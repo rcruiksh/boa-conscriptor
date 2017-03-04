@@ -1,7 +1,7 @@
 import bottle
 import os
 import random
-
+import king_codera.py
 
 @bottle.route('/static/<path:path>')
 def static(path):
