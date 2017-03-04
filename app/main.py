@@ -10,6 +10,9 @@ HEADS = 3
 BODIES = 4
 TAILS = 5
 EMPTY = 0
+OUR_NAME = "boa-conscriptor"
+OUR_HEAD = 97
+
 
 def adjDirection(headPos,bodyPos):
     if(headPos[0]-bodyPos[0] == 0): #if no difference in x direction
@@ -34,10 +37,14 @@ def creategrid(data):
         grid[eats[0]][eats[1]] = FOOD
     
     for snakes in data['snakes']:
+        if snakes['name'] == OUR_NAME:
+            ourSnake = snakes
         for pts in snakes['coords']:
             grid[pts[0]][pts[1]] = BODIES
-        grid[snakes['coords'][0]][snakes['coords'][1]] = HEADS
-    return grid
+            grid[snakes['coords'][0]][snakes['coords'][1]] = HEADS
+            if snakes == ourSnake:
+                grid[snakes['coords'][0]][snakes['coords'][1]] = OUR_HEAD
+    return grid, ourSnake
 
 
 
@@ -72,6 +79,7 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
+    grid, ourSnake = creategrid(data)
 
     directions = ['up', 'down', 'left', 'right']
     checkBody();
