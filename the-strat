@@ -2,7 +2,7 @@ use case switches
 
 
 LIST OF 4 DIRECTIONS
-remove direction 
+functions remove direction based on priority
 
 CASES:
 
