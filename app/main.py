@@ -46,7 +46,7 @@ def checkBody(directions):
     directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
     adjCoords = adjCoords(ourSnake);
     i = 0;
-    if (directions.length == 1):
+    if (len(directions) == 1):
         return;
     else:
         if (adjCoords[0] in ourSnake):
@@ -71,7 +71,7 @@ def checkWall( ourSnake, board_height, board_width, directions):
             if(no_gos[x][y] < 0 or no_gos[x][y] > board_width-1 or no_gos[x][y] > board_height-1):
                 L.append(x)
     
-    if (directions.length == 1):
+    if (len(directions) == 1):
         return;
     else:
         if 0 in L and 'right' in directions:
