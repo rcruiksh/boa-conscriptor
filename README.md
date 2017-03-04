@@ -4,6 +4,8 @@ hello richard
 
 :^)
 
+69
+
 A simple [BattleSnake AI](http://battlesnake.io) written in Python. 
 
 Visit [battlesnake.io/readme](http://battlesnake.io/readme) for API documentation and instructions for running your AI.
