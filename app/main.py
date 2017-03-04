@@ -52,7 +52,7 @@ def checkBodies(ourSnake, data, directions):
     for snakes in data['snakes']:
         for pts in snakes['coords']:
             
-            if len(directions) == 1
+            if len(directions) == 1:
                 return
             
             elif pts in R and 'right' in directions:
