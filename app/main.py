@@ -10,14 +10,7 @@ HEADS = 3
 BODIES = 4
 TAILS = 5
 EMPTY = 0
-<<<<<<< HEAD
 
-#<<<<<<< HEAD
-#=======
-#def checkBody(grid, directions):
-    
-#>>>>>>> 794904c09029b0acc9f7e77ef1a1524b6ab7d418
-=======
 OUR_NAME = "boa-conscriptor"
 OUR_HEAD = 97
 
@@ -84,7 +77,6 @@ def firstCheck(directions):
         return directions[0];
     else:
         return directions;
->>>>>>> 532b9b3229575e0c9df94c804758fcecc7b74ca8
 
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
