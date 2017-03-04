@@ -211,7 +211,7 @@ def move():
     directions = firstCheck(directions)
     mov = approachFood(grid, directions, ourSnake, data)
     
-    print(mov)
+    print("This is our current move:" + mov)
 
     return json.dumps({
         'move': mov,
