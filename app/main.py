@@ -85,7 +85,7 @@ def creategrid(data):
         grid[eats[0]][eats[1]] = FOOD
     
     for snakes in data['snakes']:
-        if snakes['name'] == OUR_NAME:
+        if snakes['id'] == data['you']:
             ourSnake = snakes
         for pts in snakes['coords']:
             grid[pts[0]][pts[1]] = BODIES
