@@ -1,6 +1,7 @@
 # battlesnake-python
 
 hello richard
+Hello Nikita
 
 A simple [BattleSnake AI](http://battlesnake.io) written in Python. 
 
