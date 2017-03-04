@@ -106,7 +106,7 @@ def static(path):
 
 @bottle.get('/')
 def index():
-    return {
+    return{
         "Hello World": ""
     }
 
