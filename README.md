@@ -2,6 +2,9 @@
 
 hello richard
 
+<<<<<<< HEAD
+I love how easy this is to use.
+
 :^)
 
 69
