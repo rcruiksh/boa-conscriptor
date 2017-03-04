@@ -1,7 +1,8 @@
-import bottle
+from flask import Flask
 import os
 import random
 import math
+app = Flask(__name__)
 #import king_codera.py
 
 FOOD = 1
@@ -30,7 +31,7 @@ def adjDirection(headPos,bodyPos):
         else:
             return 'left'; #left is to be removed from directions list
 
-#THIS FUNCTION RETURNS A LIST OF COORDINATES COORESPONDING TO DIRECTIONS
+#THIS FUNCTION RETURNS A LIST OF COORDINATES COORESPONDING TO DIRECTIONS AROUND OUR HEAD
 #ORDER: right, left, down, up.
 def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra snake body
     headPos = ourSnake['coords'][0];
@@ -39,7 +40,8 @@ def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra sna
     
     return [[x+1,y],[x-1,y],[x,y+1],[x,y-1]]; #right, left, down, up
 
-
+#Removes our neck from possible directions to move and searches for other body
+#parts around our head as to not hit ourselves
 def checkBody(directions):
     directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
     adjCoords = adjCoords(ourSnake);
@@ -98,20 +100,14 @@ def creategrid(data):
     return grid, ourSnake
 
 
-
-
-@bottle.route('/static/<path:path>')
-def static(path):
-    return bottle.static_file(path, root='static/')
-
-@bottle.get('/')
+@app.route('/', methods=["GET"])
 def index():
     return{
         "Hello World": ""
     }
 
 
-@bottle.post('/start')
+@app.route('/start', methods=["POST"])
 def start():
     data = bottle.request.json
     game_id = data['game_id']
@@ -133,7 +129,7 @@ def start():
     }
 
 
-@bottle.post('/move')
+@app.route('/move', methods=["POST"])
 def move():
     data = bottle.request.json
     #grid, ourSnake = creategrid(data)
@@ -146,9 +142,10 @@ def move():
     }
 
 
-# Expose WSGI app (so gunicorn can find it)
-application = bottle.default_app()
+
 if __name__ == '__main__':
-    bottle.run(application, host=os.getenv('IP', '0.0.0.0'), port=os.getenv('PORT', '8080'))
+    # Get port or default if running locally
+    port = int(os.environ.get("PORT", 5000))
+    app.run(port=port, host="0.0.0.0")
     
     #comment
