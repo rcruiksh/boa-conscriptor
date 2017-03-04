@@ -22,15 +22,16 @@ def findSafeFood(grid, data):
         minDistance = 9999
         closestSnake = ""
 
-        for headpt in data['snakes']['coords']:
-            if findDistance(grid, eats, headpt[0]) < minDistance:
-                minDistance = findDistance(eats, headpt[0])
-                closestSnake = data['snakes']['id']
+        for snek in data['snakes']:
+            headpt = snek['coords'][0]
+            if findDistance(grid, eats, headpt) < minDistance:
+                minDistance = findDistance(grid, eats, headpt)
+                closestSnake = snek['id']
         
         if closestSnake == data['you']:
             meals.append(eats)
 
-    sort(meals, key = findDistance) #There's almost no way in hell that this should work
+    #sort(meals, key = findDistance) #There's almost no way in hell that this should work
     return meals
 
 #Finds the distance between the food and head coordinates

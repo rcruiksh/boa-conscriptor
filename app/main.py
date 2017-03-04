@@ -2,6 +2,8 @@ from flask import Flask, json, request
 import os
 import random
 import math
+import Nikita
+import Elise
 app = Flask(__name__)
 #import king_codera.py
 
@@ -33,7 +35,7 @@ def checkHeads(ourSnake, data, directions):
             directions.remove('down')
         elif snakes['coords'][0] in U and 'up' in directions:
             directions.remove('up')
-    return
+    return directions
 
 def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i from our snake head
     headPos = ourSnake['coords'][0]
@@ -57,10 +59,11 @@ def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i
         R.append([L1[-1],L2[ind]])#RIGHT
         U.append([L1[ind],L2[0]])#UP
         D.append([L1[ind],L2[-1]])#DOWN
-        U.pop(0)
-        U.pop(-1)
-        D.pop(0)
-        D.pop(-1)
+        
+    U.pop(0)
+    U.pop(-1)
+    D.pop(0)
+    D.pop(-1)
     return L, R, U, D
 
 def checkBodies(ourSnake, data, directions):
@@ -80,11 +83,11 @@ def checkBodies(ourSnake, data, directions):
                 directions.remove('down')
             elif pts in U and 'up' in directions:
                 directions.remove('up')
-    return
+    return directions
 
 def adjDirection(headPos,bodyPos):
     if(headPos[0]-bodyPos[0] == 0): #if no difference in x direction
-        if(headPos[1]-bodypos[1] < 0): #if body is  below head
+        if(headPos[1]-bodyPos[1] < 0): #if body is  below head
             return 'down' #down is to be removed from directions list
         else:
             return 'up' #up is to be removed from directions list
@@ -105,26 +108,26 @@ def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra sna
 
 #Removes our neck from possible directions to move and searches for other body
 #parts around our head as to not hit ourselves
-def checkBody(directions):
-    directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
-    adjCoords = adjCoords(ourSnake)
+def checkBody(directions, ourSnake):
+    directions.remove(adjDirection(ourSnake['coords'][0],ourSnake['coords'][1]))
+    adjBlocks = adjCoords(ourSnake)
     i = 0
     if (len(directions) == 1):
         return
     else:
-        if (adjCoords[0] in ourSnake):
+        if (adjBlocks[0] in ourSnake['coords']):
             if 'right' in directions:
                 directions.remove('right')
-        if (adjCoords[1] in ourSnake):
+        if (adjBlocks[1] in ourSnake['coords']):
             if 'left' in directions:
                 directions.remove('left')
-        if (adjCoords[2] in ourSnake):
+        if (adjBlocks[2] in ourSnake['coords']):
             if 'down' in directions:
                 directions.remove('down')
-        if (adjCoords[3] in ourSnake):
+        if (adjBlocks[3] in ourSnake['coords']):
             if 'up' in directions:
                 directions.remove('up')
-        return
+        return directions
         
 def checkWall(ourSnake, board_height, board_width, directions):
     no_gos = adjCoords(ourSnake) #right, left, down, up
@@ -145,15 +148,15 @@ def checkWall(ourSnake, board_height, board_width, directions):
             directions.remove('down')
         if 3 in L and 'up' in directions:
             directions.remove('up')
-        return
+        return directions
         
     
-def firstCheck(directions):
-    checkBody(directions)
-    checkWall(ourSnake, board_height, board_width, directions)
-    checkHeads(ourSnake, data, directions)
-    checkBodies(ourSnake, data, directions)
-    if(directions.length==1):
+def firstCheck(directions, ourSnake, data):
+    directions = checkBody(directions, ourSnake)
+    directions = checkWall(ourSnake, board_height, board_width, directions)
+    directions = checkHeads(ourSnake, data, directions)
+    directions = checkBodies(ourSnake, data, directions)
+    if(len(directions)==1):
         return directions[0]
     else:
         return directions
@@ -169,9 +172,9 @@ def creategrid(data):
             ourSnake = snakes
         for pts in snakes['coords']:
             grid[pts[0]][pts[1]] = BODIES
-            grid[snakes['coords'][0]][snakes['coords'][1]] = HEADS
-            if snakes == ourSnake:
-                grid[snakes['coords'][0]][snakes['coords'][1]] = OUR_HEAD
+            #grid[snakes['coords'][0]][snakes['coords'][1]] = HEADS
+            #if snakes == ourSnake:
+                #grid[snakes['coords'][0]][snakes['coords'][1]] = OUR_HEAD
     return grid, ourSnake
 
 
@@ -186,8 +189,8 @@ def index():
 def start():
     data = request.get_json()
     game_id = data['game_id']
-    board_width = ['board_width']
-    board_height = ['board_height']
+    board_width = data['width']
+    board_height = data['height']
 
     #head_url = '%s://%s/static/head.png' % ()
 
@@ -207,10 +210,11 @@ def move():
 
     directions = ['up', 'down', 'left', 'right']
 
-    creategrid(data)
-    directions = firstCheck(directions)
-    mov = approachFood(grid, directions, ourSnake, data)
+    grid, ourSnake = creategrid(data)
+    directions = firstCheck(directions, ourSnake, data)
+    mov = Elise.approachFood(grid, directions, ourSnake, data)
     
+    print(grid)
     print("This is our current move:" + mov)
 
     return json.dumps({
