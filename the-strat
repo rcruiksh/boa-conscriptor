@@ -1,0 +1,11 @@
+use case switches
+
+circle safe food using snake and wall and food data
+safe food: any food that our snake can get to FIRST
+
+treat snake body like wall
+
+priority 1: get out of the way of snakes
+priority 2: no walls
+
+change priority for cases?
