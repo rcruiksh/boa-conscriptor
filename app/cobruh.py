@@ -26,7 +26,7 @@ def start():
         'color': '#00FF00',
         'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
         'head_url': head_url,
-        'name': 'BoaConSCRIPTOR'
+        'name': 'beware the boa conSCRIPTor!!'
     }
 
 
@@ -39,7 +39,7 @@ def move():
 
     return {
         'move': 'down',
-        'taunt': 'conscript!'
+        'taunt': 'battlesnake-python!'
     }
 
 

@@ -1,6 +1,7 @@
 # battlesnake-python
 
 hello richard
+Hello Nikita
 
 <<<<<<< HEAD
 I love how easy this is to use.
