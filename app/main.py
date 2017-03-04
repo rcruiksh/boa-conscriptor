@@ -171,7 +171,7 @@ def creategrid(data):
             grid[pts[0]][pts[1]] = BODIES
             #grid[snakes['coords'][0]][snakes['coords'][1]] = HEADS
             if snakes == ourSnake:
-                grid[snakes['coords'][0]][snakes['coords'][1]] = OUR_HEAD
+                #grid[snakes['coords'][0]][snakes['coords'][1]] = OUR_HEAD
     return grid, ourSnake
 
 
