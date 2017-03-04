@@ -37,7 +37,7 @@ def varAdjCoords(ourSnake,buff):
         for c in range (0,(3+2i)):
             L1[c] = x+inc
             L2[c] = y+inc
-    return L1[c].remove(varAdkCoords(ourSnake,buff-1)),
+    return L1.remove(varAdjCoords(ourSnake,buff-1)),L2.remove(varAdjCoords(ourSnake,buff-1));
 
 
 def checkBody(directions):
