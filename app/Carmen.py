@@ -43,7 +43,7 @@ def checkBody(directions):
 def firstCheck(directions):
     checkBody();
     checkWall();
-    checkSnakes();
+    checkSnakes(); #within here: checkBodies with buffer 1, checkHeads with buffer 3
     if(directions.length==1):
         return directions[0];
     else:
