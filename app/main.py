@@ -58,12 +58,12 @@ def checkBody(directions):
         directions.remove('up');
     return
         
-def checkWall(grid, ourSnake, height, width, directions):
+def checkWall( ourSnake, board_height, board_width, directions):
     no_gos = adjCoords(ourSnake) #right, left, down, up
     L = []
     for x in range(0, 4):
         for y in range(0,2):
-            if(no_gos[x][y] < 0 or no_gos[x][y] > width-1 or no_gos[x][y] > height-1):
+            if(no_gos[x][y] < 0 or no_gos[x][y] > board_width-1 or no_gos[x][y] > board_height-1):
                 L.append(x)
     if 0 in L:
         directions.remove('right')
