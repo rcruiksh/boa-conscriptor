@@ -14,8 +14,8 @@ EMPTY = 0
 OUR_NAME = "boa-conscriptor"
 OUR_HEAD = 97
 
-board_width
-board_height
+board_width = 0
+board_height = 0
 
 
 def adjDirection(headPos,bodyPos):
