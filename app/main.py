@@ -11,6 +11,9 @@ BODIES = 4
 TAILS = 5
 EMPTY = 0
 
+def checkBody(grid, directions):
+    
+
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
     #FOOD
@@ -57,9 +60,8 @@ def start():
 def move():
     data = bottle.request.json
 
-    # TODO: Do things with data
     directions = ['up', 'down', 'left', 'right']
-    
+    checkBody();
     
 
     return {
