@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, json
 import os
 import random
 import math
@@ -113,44 +113,45 @@ def creategrid(data):
 
 @app.route('/', methods=["GET"])
 def index():
-    return{
+    return json.dumps({
         "Hello World": ""
-    }
+    })
 
 
 @app.route('/start', methods=["POST"])
 def start():
-    data = bottle.request.json
-    game_id = data['game_id']
-    board_width = data['width']
-    board_height = data['height']
-
-    head_url = '%s://%s/static/head.png' % (
-        bottle.request.urlparts.scheme,
-        bottle.request.urlparts.netloc
-    )
-
-    # TODO: Do things with data
-
-    return {
-        'color': '#00FF00',
-        'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
-        'head_url': head_url,
-        'name': 'BoaConSCRIPTOR'
-    }
+#    data = bottle.request.json
+#    game_id = data['game_id']
+#    board_width = data['width']
+#    board_height = data['height']
+#
+#    head_url = '%s://%s/static/head.png' % (
+#        bottle.request.urlparts.scheme,
+#        bottle.request.urlparts.netloc
+#    )
+#
+#    # TODO: Do things with data
+#
+#    return {
+#        'color': '#00FF00',
+#        'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
+#        'head_url': head_url,
+#        'name': 'BoaConSCRIPTOR'
+#    }
+    return json.dumps({"hello": "world"})
 
 
 @app.route('/move', methods=["POST"])
 def move():
-    data = bottle.request.json
+#    data = bottle.request.json
     #grid, ourSnake = creategrid(data)
 
     directions = ['up', 'down', 'left', 'right']
     
-    return {
+    return json.dumps({
         'move': 'down',
         'taunt': 'conscript!'
-    }
+    })
 
 
 
