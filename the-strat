@@ -46,4 +46,38 @@ INFORMATION WE HAVE
 -current turn
 -your unique id
 
+L[up down left right]
 
+Def dir(x0 y0 x1 y1)
+    Return (x0-x1) and (y0-y1)
+
+Def check body(L)
+     Mybody = Dir(self[0],self[1])
+     L.remove(mybody)
+     Return L
+
+Def check wall(L)
+    #check for closest wall, if next to wall remove direction from list
+    Return(L)
+
+Def checkenemies(L)
+    #check for closest enemies, remove from list
+    Return (L)
+
+Def checkheads(L)
+    #check enemy heads
+    Return L
+
+Def generate path()
+    #if a safe path to food exists, generate a list of moves to get there and override other functions
+    Return list of moves
+
+If priority moves.len!=0
+    Rtrn = priority moves[0]
+    Priority moves.pop front
+    Return move = rtrn
+
+Elif L.len == 1
+    Move = L[0]
+Elif
+    Check closest safe food, or loop to tail
