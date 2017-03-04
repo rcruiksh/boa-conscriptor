@@ -2,7 +2,7 @@ import bottle
 import os
 import random
 import math
-import king_codera.py
+#import king_codera.py
 
 
 @bottle.route('/static/<path:path>')
