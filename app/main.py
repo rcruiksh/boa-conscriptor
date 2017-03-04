@@ -18,6 +18,52 @@ OUR_HEAD = 97
 board_width = 0
 board_height = 0
 
+def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i from our snake head
+    headPos = ourSnake['coords'][0];
+    x = headPos[0];
+    y = headPos[1];
+    L1 = []
+    L2 = []
+    L = []
+    R = []
+    U = []
+    D = []
+   
+    for c in range (0,(3+2*i)):
+        for inc in range(-(i+1),(i+2)):
+            c+=1
+            L1.append(x+inc)
+            L2.append(y+inc)
+    
+    for ind in range(0, (3+2*i)):
+        L.append([L1[0],L2[ind]])#LEFT
+        R.append([L1[-1],L2[ind]])#RIGHT
+        U.append([L1[ind],L2[0]])#UP
+        D.append([L1[ind],L2[-1]])#DOWN
+        U.pop(0)
+        U.pop(-1)
+        D.pop(0)
+        D.pop(-1)
+    return L, R, U, D
+
+def checkBodies(ourSnake, data, directions)
+    buf = 1
+    L, R, U, D = varAdjCoords(ourSnake, buf)
+    for snakes in data['snakes']:
+        for pts in snakes['coords']:
+            
+            if len(directions) == 1
+                return
+            
+            elif pts in R and 'right' in directions:
+                directions.remove('right')
+            elif pts in L and 'left' in directions:
+                directions.remove('left')
+            elif pts in D and 'down' in directions:
+                directions.remove('down')
+            elif pts in U and 'up' in directions:
+                directions.remove('up')
+    return
 
 def adjDirection(headPos,bodyPos):
     if(headPos[0]-bodyPos[0] == 0): #if no difference in x direction
