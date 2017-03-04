@@ -134,11 +134,11 @@ def checkWall( ourSnake, board_height, board_width, directions):
 def firstCheck(directions):
     checkBody()
     checkWall()
-    #checkSnakes(); #within here: checkBodies with buffer 1, checkHeads with buffer 3
+    #checkSnakes() #within here: checkBodies with buffer 1, checkHeads with buffer 3
     if(directions.length==1):
         return directions[0]
     else:
-        return directions;
+        return directions
 
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
