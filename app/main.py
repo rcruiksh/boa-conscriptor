@@ -142,9 +142,13 @@ def move():
     data = request.get_json()
 
     directions = ['up', 'down', 'left', 'right']
+
+    creategrid()
+    directions = firstCheck(directions)
+    mov = approachFood(grid, directions, ourSnake, data)
     
     return json.dumps({
-        'move': 'down',
+        'move': mov,
         'taunt': 'conscript!'
     })
 

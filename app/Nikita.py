@@ -1,4 +1,4 @@
-import bottle
+from flask import Flask, json, request
 import os
 import random
 import math
@@ -15,7 +15,7 @@ EMPTY = 0
 #From each piece of food, find the closest snake head
     #Look at difference in X and Y coords
 #If there exists a piece of food with our head being the closest
-    #Return the coordinates of that food
+    #Return the coordinates of those foods in a list
 def findSafeFood(grid, data):
     meals = []
     for eats in data['food']:
@@ -33,6 +33,7 @@ def findSafeFood(grid, data):
     sort(meals, key = findDistance) #There's almost no way in hell that this should work
     return meals
 
+#Finds the distance between the food and head coordinates
 #TODO: Take other snake bodies into account
 def findDistance(grid, food, head):
     dx = abs(food[0] - head[0])
