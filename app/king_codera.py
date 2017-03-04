@@ -3,6 +3,17 @@ import os
 import random
 
 
+
+
+
+
+
+
+
+
+
+
+'''
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
@@ -49,3 +60,5 @@ if __name__ == '__main__':
     bottle.run(application, host=os.getenv('IP', '192.168.0.28'), port=os.getenv('PORT', '4000'))
     
     #comment
+    
+'''
