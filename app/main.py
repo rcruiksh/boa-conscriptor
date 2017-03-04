@@ -19,9 +19,9 @@ board_width = 0
 board_height = 0
 
 def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i from our snake head
-    headPos = ourSnake['coords'][0];
-    x = headPos[0];
-    y = headPos[1];
+    headPos = ourSnake['coords'][0]
+    x = headPos[0]
+    y = headPos[1]
     L1 = []
     L2 = []
     L = []
@@ -46,7 +46,7 @@ def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i
         D.pop(-1)
     return L, R, U, D
 
-def checkBodies(ourSnake, data, directions)
+def checkBodies(ourSnake, data, directions):
     buf = 1
     L, R, U, D = varAdjCoords(ourSnake, buf)
     for snakes in data['snakes']:
