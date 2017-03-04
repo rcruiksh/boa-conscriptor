@@ -147,6 +147,8 @@ def move():
     directions = firstCheck(directions)
     mov = approachFood(grid, directions, ourSnake, data)
     
+    print(mov)
+
     return json.dumps({
         'move': mov,
         'taunt': 'conscript!'
