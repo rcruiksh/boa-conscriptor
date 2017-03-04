@@ -59,6 +59,8 @@ def move():
 
     # TODO: Do things with data
     directions = ['up', 'down', 'left', 'right']
+    
+    
 
     return {
         'move': 'down',
