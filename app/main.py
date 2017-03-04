@@ -88,7 +88,7 @@ def checkWall( ourSnake, board_height, board_width, directions):
 def firstCheck(directions):
     checkBody();
     checkWall();
-    checkSnakes(); #within here: checkBodies with buffer 1, checkHeads with buffer 3
+    #checkSnakes(); #within here: checkBodies with buffer 1, checkHeads with buffer 3
     if(directions.length==1):
         return directions[0];
     else:
@@ -131,7 +131,7 @@ def start():
         'color': '#0000FF',
         'taunt': 'Conscript',
         #'head_url': head_url,
-        'name': 'Boa-Conscriptor'
+        'name': 'Boa-Conscriptor',
         'head_type': "shades",
         'tail-type': "fat-rattle"
         })
