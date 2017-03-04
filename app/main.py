@@ -1,7 +1,8 @@
-import bottle
+from flask import Flask, json
 import os
 import random
 import math
+app = Flask(__name__)
 #import king_codera.py
 
 FOOD = 1
@@ -30,7 +31,7 @@ def adjDirection(headPos,bodyPos):
         else:
             return 'left'; #left is to be removed from directions list
 
-#THIS FUNCTION RETURNS A LIST OF COORDINATES COORESPONDING TO DIRECTIONS
+#THIS FUNCTION RETURNS A LIST OF COORDINATES COORESPONDING TO DIRECTIONS AROUND OUR HEAD
 #ORDER: right, left, down, up.
 def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra snake body
     headPos = ourSnake['coords'][0];
@@ -39,20 +40,28 @@ def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra sna
     
     return [[x+1,y],[x-1,y],[x,y+1],[x,y-1]]; #right, left, down, up
 
-
+#Removes our neck from possible directions to move and searches for other body
+#parts around our head as to not hit ourselves
 def checkBody(directions):
     directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
     adjCoords = adjCoords(ourSnake);
     i = 0;
-    if (adjCoords[0] in ourSnake and directions.length > 0):
-        directions.remove('right');
-    if (adjCoords[1] in ourSnake and directions.length > 0):
-        directions.remove('left');
-    if (adjCoords[2] in ourSnake and directions.length > 0):
-        directions.remove('down');
-    if (adjCoords[3] in ourSnake and directions.length > 0):
-        directions.remove('up');
-    return
+    if (directions.length == 1):
+        return;
+    else:
+        if (adjCoords[0] in ourSnake):
+            if 'right' in directions:
+                directions.remove('right');
+        if (adjCoords[1] in ourSnake):
+            if 'left' in directions:
+                directions.remove('left');
+        if (adjCoords[2] in ourSnake):
+            if 'down' in directions:
+                directions.remove('down');
+        if (adjCoords[3] in ourSnake):
+            if 'up' in directions:
+                directions.remove('up');
+        return
         
 def checkWall( ourSnake, board_height, board_width, directions):
     no_gos = adjCoords(ourSnake) #right, left, down, up
@@ -61,15 +70,19 @@ def checkWall( ourSnake, board_height, board_width, directions):
         for y in range(0,2):
             if(no_gos[x][y] < 0 or no_gos[x][y] > board_width-1 or no_gos[x][y] > board_height-1):
                 L.append(x)
-    if 0 in L:
-        directions.remove('right')
-    if 1 in L:
-        directions.remove('left')
-    if 2 in L:
-        directions.remove('down')
-    if 3 in L:
-        directions.remove('up')
-    return
+    
+    if (directions.length == 1):
+        return;
+    else:
+        if 0 in L and 'right' in directions:
+            directions.remove('right')
+        if 1 in L and 'left' in directions:
+            directions.remove('left')
+        if 2 in L and 'down' in directions:
+            directions.remove('down')
+        if 3 in L and 'up' in directions:
+            directions.remove('up')
+        return
         
     
 def firstCheck(directions):
@@ -98,21 +111,16 @@ def creategrid(data):
     return grid, ourSnake
 
 
-
-
-@bottle.route('/static/<path:path>')
-def static(path):
-    return bottle.static_file(path, root='static/')
-
-@bottle.get('/')
+@app.route('/', methods=["GET"])
 def index():
-    return{
+    return json.dumps({
         "Hello World": ""
-    }
+    })
 
 
-@bottle.post('/start')
+@app.route('/start', methods=["POST"])
 def start():
+<<<<<<< HEAD
     data = bottle.request.json
     game_id = data['game_id']
     board_width = data['width']
@@ -136,21 +144,46 @@ def start():
 
 
 @bottle.post('/move')
+=======
+#    data = bottle.request.json
+#    game_id = data['game_id']
+#    board_width = data['width']
+#    board_height = data['height']
+#
+#    head_url = '%s://%s/static/head.png' % (
+#        bottle.request.urlparts.scheme,
+#        bottle.request.urlparts.netloc
+#    )
+#
+#    # TODO: Do things with data
+#
+#    return {
+#        'color': '#00FF00',
+#        'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
+#        'head_url': head_url,
+#        'name': 'BoaConSCRIPTOR'
+#    }
+    return json.dumps({"hello": "world"})
+
+
+@app.route('/move', methods=["POST"])
+>>>>>>> 94f4ae2116e1b6238d506cc2eedaca1f25693552
 def move():
-    data = bottle.request.json
+#    data = bottle.request.json
     #grid, ourSnake = creategrid(data)
 
     directions = ['up', 'down', 'left', 'right']
     
-    return {
+    return json.dumps({
         'move': 'down',
         'taunt': 'conscript!'
-    }
+    })
 
 
-# Expose WSGI app (so gunicorn can find it)
-application = bottle.default_app()
+
 if __name__ == '__main__':
-    bottle.run(application, host=os.getenv('IP', '0.0.0.0'), port=os.getenv('PORT', '8080'))
+    # Get port or default if running locally
+    port = int(os.environ.get("PORT", 5000))
+    app.run(port=port, host="0.0.0.0")
     
     #comment
