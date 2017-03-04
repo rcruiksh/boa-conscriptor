@@ -24,6 +24,7 @@ def checkHeads(ourSnake, data, directions):
     buf = 3
     L, R, U, D = varAdjCoords(ourSnake, buf)
     for snakes in data['snakes']:
+
         if len(directions) == 1:
             return
             
@@ -157,7 +158,7 @@ def firstCheck(directions, ourSnake, data):
     directions = checkHeads(ourSnake, data, directions)
     directions = checkBodies(ourSnake, data, directions)
     if(len(directions)==1):
-        return directions[0]
+        return directions
     else:
         return directions
 
@@ -212,7 +213,10 @@ def move():
 
     grid, ourSnake = creategrid(data)
     directions = firstCheck(directions, ourSnake, data)
-    mov = Elise.approachFood(grid, directions, ourSnake, data)
+    if len(directions) == 1:
+        mov = directions[0]
+    else:
+        mov = Elise.approachFood(grid, directions, ourSnake, data)
     
     print(grid)
     print("This is our current move:" + mov)
