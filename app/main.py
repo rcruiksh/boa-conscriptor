@@ -136,9 +136,7 @@ def move():
     grid, ourSnake = creategrid(data)
 
     directions = ['up', 'down', 'left', 'right']
-    checkBody();
     
-
     return {
         'move': 'down',
         'taunt': 'conscript!'
