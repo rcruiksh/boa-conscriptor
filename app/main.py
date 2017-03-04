@@ -11,7 +11,7 @@ BODIES = 4
 TAILS = 5
 EMPTY = 0
 
-def checkBody(grid, directions):
+#def checkBody(grid, directions):
     
 
 def creategrid(data):
