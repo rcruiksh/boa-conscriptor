@@ -22,7 +22,7 @@ def checkHeads(ourSnake, data, directions):
     buf = 3
     L, R, U, D = varAdjCoords(ourSnake, buf)
     for snakes in data['snakes']:
-        if len(directions) == 1
+        if len(directions) == 1:
             return
             
         elif snakes['coords'][0] in R and 'right' in directions:
@@ -69,7 +69,7 @@ def checkBodies(ourSnake, data, directions):
     for snakes in data['snakes']:
         for pts in snakes['coords']:
             
-            if len(directions) == 1
+            if len(directions) == 1:
                 return
             
             elif pts in R and 'right' in directions:
