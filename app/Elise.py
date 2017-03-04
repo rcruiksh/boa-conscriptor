@@ -19,9 +19,12 @@ EMPTY = 0
 #       ourSnake - list of ourSnake coordinates
 #       data - data
 def approachFood(grid, moves, ourSnake, data):
-    eats = findSafeFood(grid, data)
+    eats = Nikita.findSafeFood(grid, data)
     if len(eats) == 0:
-        return list[0]
+        if len(moves) == 0:
+            print("HOLYSHITITS EMPTY")
+            return 'left'
+        return moves[0]
 
     target = eats[0]
     dx = target[0] - ourSnake['coords'[0][0]]
@@ -36,4 +39,7 @@ def approachFood(grid, moves, ourSnake, data):
     elif dy > 0 and 'down' in moves:
         return 'down'
 
-    return list[0]
+    if len(moves) == 0:
+            print("HOLYSHITITS EMPTY?!?!??!?!")
+            return 'left'
+    return moves[0]
