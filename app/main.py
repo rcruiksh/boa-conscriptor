@@ -14,6 +14,9 @@ EMPTY = 0
 OUR_NAME = "boa-conscriptor"
 OUR_HEAD = 97
 
+board_width
+board_height
+
 
 def adjDirection(headPos,bodyPos):
     if(headPos[0]-bodyPos[0] == 0): #if no difference in x direction
