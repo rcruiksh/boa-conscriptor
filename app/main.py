@@ -46,15 +46,22 @@ def checkBody(directions):
     directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
     adjCoords = adjCoords(ourSnake);
     i = 0;
-    if (adjCoords[0] in ourSnake and directions.length > 0):
-        directions.remove('right');
-    if (adjCoords[1] in ourSnake and directions.length > 0):
-        directions.remove('left');
-    if (adjCoords[2] in ourSnake and directions.length > 0):
-        directions.remove('down');
-    if (adjCoords[3] in ourSnake and directions.length > 0):
-        directions.remove('up');
-    return
+    if (directions.length == 1):
+        return;
+    else:
+        if (adjCoords[0] in ourSnake):
+            if 'right' in directions:
+                directions.remove('right');
+        if (adjCoords[1] in ourSnake):
+            if 'left' in directions:
+                directions.remove('left');
+        if (adjCoords[2] in ourSnake):
+            if 'down' in directions:
+                directions.remove('down');
+        if (adjCoords[3] in ourSnake):
+            if 'up' in directions:
+                directions.remove('up');
+        return
         
 def checkWall( ourSnake, board_height, board_width, directions):
     no_gos = adjCoords(ourSnake) #right, left, down, up
@@ -63,15 +70,19 @@ def checkWall( ourSnake, board_height, board_width, directions):
         for y in range(0,2):
             if(no_gos[x][y] < 0 or no_gos[x][y] > board_width-1 or no_gos[x][y] > board_height-1):
                 L.append(x)
-    if 0 in L:
-        directions.remove('right')
-    if 1 in L:
-        directions.remove('left')
-    if 2 in L:
-        directions.remove('down')
-    if 3 in L:
-        directions.remove('up')
-    return
+    
+    if (directions.length == 1):
+        return;
+    else:
+        if 0 in L and 'right' in directions:
+            directions.remove('right')
+        if 1 in L and 'left' in directions:
+            directions.remove('left')
+        if 2 in L and 'down' in directions:
+            directions.remove('down')
+        if 3 in L and 'up' in directions:
+            directions.remove('up')
+        return
         
     
 def firstCheck(directions):

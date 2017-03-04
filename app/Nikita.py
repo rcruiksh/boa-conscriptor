@@ -33,6 +33,7 @@ def findSafeFood(grid, data):
     sort(meals, key = findDistance)
     return meals
 
+#TODO: Take other snake bodies into account
 def findDistance(grid, food, head):
     dx = abs(food[0] - head[0])
     dy = abs(food[1] - head[1])
