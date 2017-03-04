@@ -15,3 +15,10 @@ any snake within one block - take action
 if snake head of SMALLER snake is adjacent - kill
 
 
+Step 1: snake that doesn’t run into walls
+Step 2: snake that doesn’t run into snakes
+Step 3: any food
+Step 4: closest 
+Step 5: circle food until low health then eat
+Step 6: safe food
+
