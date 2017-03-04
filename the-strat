@@ -9,3 +9,9 @@ priority 1: get out of the way of snakes
 priority 2: no walls
 
 change priority for cases?
+
+any snake within one block - take action
+
+if snake head of SMALLER snake is adjacent - kill
+
+
