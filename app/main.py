@@ -11,11 +11,11 @@ BODIES = 4
 TAILS = 5
 EMPTY = 0
 
-<<<<<<< HEAD
-=======
+#<<<<<<< HEAD
+#=======
 #def checkBody(grid, directions):
     
->>>>>>> 794904c09029b0acc9f7e77ef1a1524b6ab7d418
+#>>>>>>> 794904c09029b0acc9f7e77ef1a1524b6ab7d418
 
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
