@@ -18,6 +18,23 @@ OUR_HEAD = 97
 board_width = 0
 board_height = 0
 
+def checkHeads(ourSnake, data, directions):
+    buf = 3
+    L, R, U, D = varAdjCoords(ourSnake, buf)
+    for snakes in data['snakes']:
+        if len(directions) == 1
+            return
+            
+        elif snakes['coords'][0] in R and 'right' in directions:
+            directions.remove('right')
+        elif snakes['coords'][0] in L and 'left' in directions:
+            directions.remove('left')
+        elif snakes['coords'][0] in D and 'down' in directions:
+            directions.remove('down')
+        elif snakes['coords'][0] in U and 'up' in directions:
+            directions.remove('up')
+    return
+
 def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i from our snake head
     headPos = ourSnake['coords'][0]
     x = headPos[0]
@@ -52,7 +69,7 @@ def checkBodies(ourSnake, data, directions):
     for snakes in data['snakes']:
         for pts in snakes['coords']:
             
-            if len(directions) == 1:
+            if len(directions) == 1
                 return
             
             elif pts in R and 'right' in directions:
@@ -68,45 +85,45 @@ def checkBodies(ourSnake, data, directions):
 def adjDirection(headPos,bodyPos):
     if(headPos[0]-bodyPos[0] == 0): #if no difference in x direction
         if(headPos[1]-bodypos[1] < 0): #if body is  below head
-            return 'down'; #down is to be removed from directions list
+            return 'down' #down is to be removed from directions list
         else:
-            return 'up'; #up is to be removed from directions list
+            return 'up' #up is to be removed from directions list
     else: #if there is a difference in the x direction
         if(headPos[0] - bodyPos[0] < 0): #if body is to the right of head
-            return 'right'; #right is to be removed from directions list
+            return 'right' #right is to be removed from directions list
         else:
-            return 'left'; #left is to be removed from directions list
+            return 'left' #left is to be removed from directions list
 
 #THIS FUNCTION RETURNS A LIST OF COORDINATES COORESPONDING TO DIRECTIONS AROUND OUR HEAD
 #ORDER: right, left, down, up.
 def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra snake body
-    headPos = ourSnake['coords'][0];
-    x = headPos[0];
-    y = headPos[1];
+    headPos = ourSnake['coords'][0]
+    x = headPos[0]
+    y = headPos[1]
     
-    return [[x+1,y],[x-1,y],[x,y+1],[x,y-1]]; #right, left, down, up
+    return [[x+1,y],[x-1,y],[x,y+1],[x,y-1]] #right, left, down, up
 
 #Removes our neck from possible directions to move and searches for other body
 #parts around our head as to not hit ourselves
 def checkBody(directions):
     directions.remove(adjDirection(ourSnake[0],ourSnake[1]))
-    adjCoords = adjCoords(ourSnake);
-    i = 0;
+    adjCoords = adjCoords(ourSnake)
+    i = 0
     if (len(directions) == 1):
-        return;
+        return
     else:
         if (adjCoords[0] in ourSnake):
             if 'right' in directions:
-                directions.remove('right');
+                directions.remove('right')
         if (adjCoords[1] in ourSnake):
             if 'left' in directions:
-                directions.remove('left');
+                directions.remove('left')
         if (adjCoords[2] in ourSnake):
             if 'down' in directions:
-                directions.remove('down');
+                directions.remove('down')
         if (adjCoords[3] in ourSnake):
             if 'up' in directions:
-                directions.remove('up');
+                directions.remove('up')
         return
         
 def checkWall( ourSnake, board_height, board_width, directions):
@@ -118,7 +135,7 @@ def checkWall( ourSnake, board_height, board_width, directions):
                 L.append(x)
     
     if (len(directions) == 1):
-        return;
+        return
     else:
         if 0 in L and 'right' in directions:
             directions.remove('right')
@@ -132,13 +149,13 @@ def checkWall( ourSnake, board_height, board_width, directions):
         
     
 def firstCheck(directions):
-    checkBody();
-    checkWall();
-    #checkSnakes(); #within here: checkBodies with buffer 1, checkHeads with buffer 3
+    checkBody()
+    checkWall()
+    #checkSnakes() #within here: checkBodies with buffer 1, checkHeads with buffer 3
     if(directions.length==1):
-        return directions[0];
+        return directions[0]
     else:
-        return directions;
+        return directions
 
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
