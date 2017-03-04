@@ -10,8 +10,12 @@ HEADS = 3
 BODIES = 4
 TAILS = 5
 EMPTY = 0
+
 OUR_NAME = "boa-conscriptor"
 OUR_HEAD = 97
+
+board_width = 0
+board_height = 0
 
 
 def adjDirection(headPos,bodyPos):
@@ -29,7 +33,7 @@ def adjDirection(headPos,bodyPos):
 #THIS FUNCTION RETURNS A LIST OF COORDINATES COORESPONDING TO DIRECTIONS
 #ORDER: right, left, down, up.
 def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra snake body
-    headPos = ourSnake[0];
+    headPos = ourSnake['coords'][0];
     x = headPos[0];
     y = headPos[1];
     
@@ -50,12 +54,12 @@ def checkBody(directions):
         directions.remove('up');
     return
         
-def checkWall(grid, ourSnake, height, width, directions):
+def checkWall( ourSnake, board_height, board_width, directions):
     no_gos = adjCoords(ourSnake) #right, left, down, up
     L = []
     for x in range(0, 4):
         for y in range(0,2):
-            if(no_gos[x][y] < 0 or no_gos[x][y] > width-1 or no_gos[x][y] > height-1):
+            if(no_gos[x][y] < 0 or no_gos[x][y] > board_width-1 or no_gos[x][y] > board_height-1):
                 L.append(x)
     if 0 in L:
         directions.remove('right')
@@ -84,7 +88,7 @@ def creategrid(data):
         grid[eats[0]][eats[1]] = FOOD
     
     for snakes in data['snakes']:
-        if snakes['name'] == OUR_NAME:
+        if snakes['id'] == data['you']:
             ourSnake = snakes
         for pts in snakes['coords']:
             grid[pts[0]][pts[1]] = BODIES
@@ -135,9 +139,7 @@ def move():
     grid, ourSnake = creategrid(data)
 
     directions = ['up', 'down', 'left', 'right']
-    checkBody();
     
-
     return {
         'move': 'down',
         'taunt': 'conscript!'

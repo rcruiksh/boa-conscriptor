@@ -2,7 +2,6 @@ import bottle
 import os
 import random
 import math
-import king_codera.py
 
 FOOD = 1
 WALL = 2
@@ -12,64 +11,28 @@ TAILS = 5
 EMPTY = 0
 
 
-def creategrid(data):
-    grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
-    #FOOD
+#roughly
+#From each piece of food, find the closest snake head
+    #Look at difference in X and Y coords
+#If there exists a piece of food with our head being the closest
+    #Return the coordinates of that food
+def findSafeFood(grid, data):
+    meals = []
     for eats in data['food']:
-        grid[eats[0]][eats[1]] = FOOD
-    
-    for snakes in data['snakes']:
-        for pts in snakes['coords']:
-            grid[pts[0]][pts[1]] = BODIES
-        grid[snakes['coords'][0]][snakes['coords'][1]] = HEADS
-    return grid
+        minDistance = 9999
+        closestSnake = ""
 
+        for headpt in data['snakes']['coords']:
+            if findDistance(grid, eats, headpt[0]) < minDistance:
+                minDistance = findDistance(eats, headpt[0])
+                closestSnake = data['snakes']['id']
+        
+        if closestSnake == data['you']:
+            meals.append[eats]
 
+    return meals
 
-
-@bottle.route('/static/<path:path>')
-def static(path):
-    return bottle.static_file(path, root='static/')
-
-
-@bottle.post('/start')
-def start():
-    data = bottle.request.json
-    game_id = data['game_id']
-    board_width = data['width']
-    board_height = data['height']
-
-    head_url = '%s://%s/static/head.png' % (
-        bottle.request.urlparts.scheme,
-        bottle.request.urlparts.netloc
-    )
-
-    # TODO: Do things with data
-
-    return {
-        'color': '#00FF00',
-        'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
-        'head_url': head_url,
-        'name': 'BoaConSCRIPTOR'
-    }
-
-
-@bottle.post('/move')
-def move():
-    data = bottle.request.json
-
-    # TODO: Do things with data
-    directions = ['up', 'down', 'left', 'right']
-
-    return {
-        'move': 'down',
-        'taunt': 'conscript!'
-    }
-
-
-# Expose WSGI app (so gunicorn can find it)
-application = bottle.default_app()
-if __name__ == '__main__':
-    bottle.run(application, host=os.getenv('IP', '0.0.0.0'), port=os.getenv('PORT', '8080'))
-    
-    #comment
+def findDistance(grid, food, head):
+    dx = food[0] - head[0]
+    dy = food[1] - head[1]
+    return dx + dy
