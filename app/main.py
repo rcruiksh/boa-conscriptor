@@ -18,6 +18,23 @@ OUR_HEAD = 97
 board_width = 0
 board_height = 0
 
+def checkHeads(ourSnake, data, directions):
+    buf = 3
+    L, R, U, D = varAdjCoords(ourSnake, buf)
+    for snakes in data['snakes']:
+        if len(directions) == 1
+            return
+            
+        elif snakes['coords'][0] in R and 'right' in directions:
+            directions.remove('right')
+        elif snakes['coords'][0] in L and 'left' in directions:
+            directions.remove('left')
+        elif snakes['coords'][0] in D and 'down' in directions:
+            directions.remove('down')
+        elif snakes['coords'][0] in U and 'up' in directions:
+            directions.remove('up')
+    return
+
 def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i from our snake head
     headPos = ourSnake['coords'][0]
     x = headPos[0]
