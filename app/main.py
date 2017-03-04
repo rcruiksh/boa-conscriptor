@@ -130,6 +130,8 @@ def start():
         'taunt': '{} ({}x{})'.format(game_id, board_width, board_height),
         'head_url': head_url,
         'name': 'BoaConSCRIPTOR'
+        'head_type': "shades",
+        'tail-type': "fat-rattle"
     }
 
 
