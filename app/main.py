@@ -126,7 +126,7 @@ def checkBody(directions):
                 directions.remove('up')
         return
         
-def checkWall( ourSnake, board_height, board_width, directions):
+def checkWall(ourSnake, board_height, board_width, directions):
     no_gos = adjCoords(ourSnake) #right, left, down, up
     L = []
     for x in range(0, 4):
@@ -149,9 +149,10 @@ def checkWall( ourSnake, board_height, board_width, directions):
         
     
 def firstCheck(directions):
-    checkBody()
-    checkWall()
-    #checkSnakes() #within here: checkBodies with buffer 1, checkHeads with buffer 3
+    checkBody(directions)
+    checkWall(ourSnake, board_height, board_width, directions)
+    checkHeads(ourSnake, data, directions)
+    checkBodies(ourSnake, data, directions)
     if(directions.length==1):
         return directions[0]
     else:
@@ -206,7 +207,7 @@ def move():
 
     directions = ['up', 'down', 'left', 'right']
 
-    creategrid()
+    creategrid(data)
     directions = firstCheck(directions)
     mov = approachFood(grid, directions, ourSnake, data)
     
