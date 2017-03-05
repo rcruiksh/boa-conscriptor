@@ -119,6 +119,7 @@ def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra sna
 #parts around our head as to not hit ourselves
 def checkBody(directions, ourSnake):
     directions.remove(adjDirection(ourSnake['coords'][0],ourSnake['coords'][1]))
+    return directions
     adjBlocks = adjCoords(ourSnake)
     i = 0
     if (len(directions) == 1):
@@ -127,6 +128,8 @@ def checkBody(directions, ourSnake):
     elif (adjBlocks[0] in ourSnake['coords'] and len(directions)>1):
         if 'right' in directions:
             directions.remove('right')
+            print("right removed from directions because own body detected")
+            print(directions)
     elif (adjBlocks[1] in ourSnake['coords'] and len(directions)>1):
         if 'left' in directions:
             directions.remove('left')
