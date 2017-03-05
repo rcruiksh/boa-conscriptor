@@ -115,6 +115,8 @@ def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra sna
 #parts around our head as to not hit ourselves
 def checkBody(directions, ourSnake):
     directions.remove(adjDirection(ourSnake['coords'][0],ourSnake['coords'][1]))
+    print("neck detected in checkBody")
+    print(directions)
     return directions
     adjBlocks = adjCoords(ourSnake)
     i = 0
@@ -129,15 +131,24 @@ def checkBody(directions, ourSnake):
     elif (adjBlocks[1] in ourSnake['coords'] and len(directions)>1):
         if 'left' in directions:
             directions.remove('left')
+            print("left removed from directions because own body detected")
+            print(directions)
     elif (adjBlocks[2] in ourSnake['coords'] and len(directions)>1):
         if 'down' in directions:
             directions.remove('down')
+            print("down removed from directions because own body detected")
+            print(directions)
     elif (adjBlocks[3] in ourSnake['coords'] and len(directions)>1):
         if 'up' in directions:
             directions.remove('up')
+            print("up removed from directions because own body detected")
+            print(directions)
     return directions
         
 def checkWall(ourSnake, board_height, board_width, directions):
+    print("height, width")
+    print(height)
+    print(width)
     no_gos = adjCoords(ourSnake) #right, left, down, up
     L = []
     for x in range(0, 4):
