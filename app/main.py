@@ -164,14 +164,7 @@ def firstCheck(directions, ourSnake, data):
     print("THIS IS THE LIST!!!@!@#!##$@$#")
     print(directions)
     directions = checkBodies(ourSnake, data, directions)
-<<<<<<< HEAD
     return directions
-=======
-    if(len(directions)==1):
-        return directions
-    else:
-        return directions
->>>>>>> 667972668f69d7805b3bb6d4ec83c14cb989ce2d
 
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
