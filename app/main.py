@@ -181,17 +181,19 @@ def checkWall(ourSnake, data, directions):
         
     
 def firstCheck(directions, ourSnake, data):
-    print("YOLO SWAG" + " PURPLE DRAGON" + "\n THIS IS A LIST")
-    print(directions)
     directions = checkBody(directions, ourSnake)
+    print("THIS IS THE LIST AFTER CHECK BODY")
     print(directions)
     directions = checkWall(ourSnake, data, directions)
-    print("THIS IS THE LIST@@@@@@@@@@")
+    print("THIS IS THE LIST AFTER CHECK WALL")
     print(directions)
     directions = checkHeads(ourSnake, data, directions)
-    print("THIS IS THE LIST!!!@!@#!##$@$#")
+    print("THIS IS THE LIST AFTER CHECK HEADS")
     print(directions)
+    #TODO Check heads or bodies first?
     directions = checkBodies(ourSnake, data, directions)
+    print("THIS IS THE LIST AFTER CHECK BODIES")
+    print(directions)
     return directions
 
 def creategrid(data):
@@ -241,6 +243,8 @@ def start():
 def move():
     data = request.get_json()
 
+    print("===================================================================")
+
     directions = ['up', 'down', 'left', 'right']
 
     grid, ourSnake = creategrid(data)
@@ -250,7 +254,6 @@ def move():
     else:
         mov = Elise.approachFood(grid, directions, ourSnake, data)
     
-    print(grid)
     print("This is our current move:")
     print(mov)
 

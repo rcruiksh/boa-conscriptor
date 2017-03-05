@@ -20,6 +20,8 @@ EMPTY = 0
 #       data - data
 def approachFood(grid, moves, ourSnake, data):
     eats = Nikita.findSafeFood(grid, data)
+    print("FOOD TARGET")
+    print(eats)
     if len(eats) == 0:
         if len(moves) == 0:
             print("HOLYSHITITS EMPTY")
