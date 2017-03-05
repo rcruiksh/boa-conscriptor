@@ -164,7 +164,14 @@ def firstCheck(directions, ourSnake, data):
     print("THIS IS THE LIST!!!@!@#!##$@$#")
     print(directions)
     directions = checkBodies(ourSnake, data, directions)
+<<<<<<< HEAD
     return directions
+=======
+    if(len(directions)==1):
+        return directions
+    else:
+        return directions
+>>>>>>> 667972668f69d7805b3bb6d4ec83c14cb989ce2d
 
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
@@ -217,7 +224,10 @@ def move():
 
     grid, ourSnake = creategrid(data)
     directions = firstCheck(directions, ourSnake, data)
-    mov = Elise.approachFood(grid, directions, ourSnake, data)
+    if len(directions) == 1:
+        mov = directions[0]
+    else:
+        mov = Elise.approachFood(grid, directions, ourSnake, data)
     
     print(grid)
     print("This is our current move:" + mov)
