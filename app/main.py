@@ -113,7 +113,7 @@ def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra sna
     x = headPos[0]
     y = headPos[1]
     
-    return [[x+2,y],[x-2,y],[x,y+2],[x,y-2]] #right, left, down, up
+    return [[x+1,y],[x-1,y],[x,y+1],[x,y-1]] #right, left, down, up
 
 #Removes our neck from possible directions to move and searches for other body
 #parts around our head as to not hit ourselves
