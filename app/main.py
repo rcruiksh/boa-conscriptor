@@ -58,12 +58,15 @@ def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i
             c+=1
             L1.append(x+inc)
             L2.append(y+inc)
-    
+    i = 0
+    g = 0
+    t = 0 
+    r = 0
     for ind in range(0, (3+2*i)):
-        L.append([L1[0],L2[ind]])#LEFT
-        R.append([L1[-1],L2[ind]])#RIGHT
-        U.append([L1[ind],L2[0]])#UP
-        D.append([L1[ind],L2[-1]])#DOWN
+        L.append([L1[i++],L2[ind]])#LEFT
+        R.append([L1[g++],L2[ind]])#RIGHT
+        U.append([L1[ind],L2[t++]])#UP
+        D.append([L1[ind],L2[r++]])#DOWN
         
     U.pop(0)
     U.pop(-1)
