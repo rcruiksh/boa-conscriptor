@@ -223,7 +223,8 @@ def move():
         mov = Elise.approachFood(grid, directions, ourSnake, data)
     
     print(grid)
-    print("This is our current move:" + mov)
+    print("This is our current move:")
+    print(mov)
 
     return json.dumps({
         'move': mov,
