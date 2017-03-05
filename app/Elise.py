@@ -27,8 +27,8 @@ def approachFood(grid, moves, ourSnake, data):
         return moves[0]
 
     target = eats[0]
-    dx = target[0] - ourSnake['coords'][0]
-    dy = target[1] - ourSnake['coords'][1]
+    dx = target[0] - ourSnake['coords'][0][0]
+    dy = target[1] - ourSnake['coords'][0][1]
 
     if dx < 0 and 'left' in moves:
         return 'left'
