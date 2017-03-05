@@ -31,7 +31,7 @@ def findSafeFood(grid, data):
         
         if closestSnake == data['you']:
             meals.append(eats)
-            if(meals[0] < findDistance(grid, meals[-1], closestSnake[0])):
+            if(findDistance(grid, meals[0], closestSnake[0]) < findDistance(grid, meals[-1], closestSnake[0])):
                 minToUs = findDistance(grid, meals[-1], closestSnake[0])
                 temp = meals[0]
                 meals[0] = meals[-1]
