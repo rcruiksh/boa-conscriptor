@@ -30,16 +30,16 @@ def checkHeads(ourSnake, data, directions):
             
         elif snakes['coords'][0] in R and 'right' in directions:
             directions.remove('right')
-            print "removing right from checkHeads"
+            #print "removing right from checkHeads"
         elif snakes['coords'][0] in L and 'left' in directions:
             directions.remove('left')
-            print "removing left from checkHeads"
+            #print "removing left from checkHeads"
         elif snakes['coords'][0] in D and 'down' in directions:
             directions.remove('down')
-            print "removing down from checkHeads"
+            #print "removing down from checkHeads"
         elif snakes['coords'][0] in U and 'up' in directions:
             directions.remove('up')
-            print "removing up from checkHeads"
+            #print "removing up from checkHeads"
     return directions
 
 def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i from our snake head
@@ -82,16 +82,16 @@ def checkBodies(ourSnake, data, directions):
             
             elif pts in R and 'right' in directions:
                 directions.remove('right')
-                print "removing right from checkBodies"
+                #print "removing right from checkBodies"
             elif pts in L and 'left' in directions:
                 directions.remove('left')
-                print "removing left from checkBodies"
+                #print "removing left from checkBodies"
             elif pts in D and 'down' in directions:
                 directions.remove('down')
-                print "removing down from checkBodies"
+                #print "removing down from checkBodies"
             elif pts in U and 'up' in directions:
                 directions.remove('up')
-                print "removing up from checkBodies"
+                #print "removing up from checkBodies"
     return directions
 
 def adjDirection(headPos,bodyPos):
@@ -119,8 +119,8 @@ def adjCoords(ourSnake): #returns a list of 4 coordinates to check for extra sna
 #parts around our head as to not hit ourselves
 def checkBody(directions, ourSnake):
     directions.remove(adjDirection(ourSnake['coords'][0],ourSnake['coords'][1]))
-    print("neck detected in checkBody")
-    print(directions)
+    #print("neck detected in checkBody")
+    #print(directions)
     return directions
     adjBlocks = adjCoords(ourSnake)
     i = 0
@@ -130,31 +130,31 @@ def checkBody(directions, ourSnake):
     elif (adjBlocks[0] in ourSnake['coords'] and len(directions)>1):
         if 'right' in directions:
             directions.remove('right')
-            print("right removed from directions because own body detected")
-            print(directions)
+            #print("right removed from directions because own body detected")
+            #print(directions)
     elif (adjBlocks[1] in ourSnake['coords'] and len(directions)>1):
         if 'left' in directions:
             directions.remove('left')
-            print("left removed from directions because own body detected")
-            print(directions)
+            #print("left removed from directions because own body detected")
+            #print(directions)
     elif (adjBlocks[2] in ourSnake['coords'] and len(directions)>1):
         if 'down' in directions:
             directions.remove('down')
-            print("down removed from directions because own body detected")
-            print(directions)
+            #print("down removed from directions because own body detected")
+            #print(directions)
     elif (adjBlocks[3] in ourSnake['coords'] and len(directions)>1):
         if 'up' in directions:
             directions.remove('up')
-            print("up removed from directions because own body detected")
-            print(directions)
+            #print("up removed from directions because own body detected")
+            #print(directions)
     return directions
         
 def checkWall(ourSnake, data, directions):
     board_width = data['width']
     board_height = data['height']
-    print("height, width")
-    print(board_height)
-    print(board_width)
+    #print("height, width")
+    #print(board_height)
+    #print(board_width)
     no_gos = adjCoords(ourSnake) #right, left, down, up
     L = []
     for x in range(0, 4):
@@ -167,33 +167,33 @@ def checkWall(ourSnake, data, directions):
     else:
         if 0 in L and 'right' in directions and len(directions)>1:
             directions.remove('right')
-            print "removing right from checkWall"
+            #print "removing right from checkWall"
         if 1 in L and 'left' in directions and len(directions)>1:
             directions.remove('left')
-            print "removing left from checkWall"
+            #print "removing left from checkWall"
         if 2 in L and 'down' in directions and len(directions)>1:
             directions.remove('down')
-            print "removing down from checkWall"
+            #print "removing down from checkWall"
         if 3 in L and 'up' in directions and len(directions)>1:
             directions.remove('up')
-            print "removing up from checkWall"
+            #print "removing up from checkWall"
         return directions
         
     
 def firstCheck(directions, ourSnake, data):
     directions = checkBody(directions, ourSnake)
-    print("THIS IS THE LIST AFTER CHECK BODY")
-    print(directions)
+    #print("THIS IS THE LIST AFTER CHECK BODY")
+    #print(directions)
     directions = checkWall(ourSnake, data, directions)
-    print("THIS IS THE LIST AFTER CHECK WALL")
-    print(directions)
+    #print("THIS IS THE LIST AFTER CHECK WALL")
+    #print(directions)
     directions = checkHeads(ourSnake, data, directions)
-    print("THIS IS THE LIST AFTER CHECK HEADS")
-    print(directions)
+    #print("THIS IS THE LIST AFTER CHECK HEADS")
+    #print(directions)
     #TODO Check heads or bodies first?
     directions = checkBodies(ourSnake, data, directions)
-    print("THIS IS THE LIST AFTER CHECK BODIES")
-    print(directions)
+    #print("THIS IS THE LIST AFTER CHECK BODIES")
+    #print(directions)
     return directions
 
 def creategrid(data):
@@ -243,7 +243,7 @@ def start():
 def move():
     data = request.get_json()
 
-    print("========================================================================================================")
+    #print("========================================================================================================")
 
     directions = ['up', 'down', 'left', 'right']
 
@@ -254,8 +254,8 @@ def move():
     else:
         mov = Elise.approachFood(grid, directions, ourSnake, data)
     
-    print("This is our current move:")
-    print(mov)
+    #print("This is our current move:")
+    #print(mov)
 
     return json.dumps({
         'move': mov,
