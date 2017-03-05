@@ -30,9 +30,10 @@ def findSafeFood(grid, data):
                 closestSnake = snek['id']
         
         if closestSnake == data['you']:
-            if(findDistance(grid, eats, closestSnake[0]) < minToUs):
-                minToUs = findDistance(grid, eats, closestSnake[0])
-                meals[0] = eats
+            meals.append(eats)
+            #if(findDistance(grid, eats, closestSnake[0]) < minToUs):
+            #    minToUs = findDistance(grid, eats, closestSnake[0])
+            #    meals[0] = eats
 
 
     #sort(meals, key = findDistance(grid, this, data['snakes']['coords'][0])) #There's almost no way in hell that this should work
