@@ -151,8 +151,8 @@ def checkBody(directions, ourSnake):
         
 def checkWall(ourSnake, board_height, board_width, directions):
     print("height, width")
-    print(height)
-    print(width)
+    print(board_height)
+    print(board_width)
     no_gos = adjCoords(ourSnake) #right, left, down, up
     L = []
     for x in range(0, 4):
