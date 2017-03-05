@@ -24,8 +24,9 @@ def checkHeads(ourSnake, data, directions):
     buf = 3
     L, R, U, D = varAdjCoords(ourSnake, buf)
     for snakes in data['snakes']:
+
         if len(directions) == 1:
-            return
+            return directions
             
         elif snakes['coords'][0] in R and 'right' in directions:
             directions.remove('right')
@@ -72,7 +73,7 @@ def checkBodies(ourSnake, data, directions):
     for snakes in data['snakes']:
         for pts in snakes['coords']:
             
-            if len(directions) == 1:
+            if (len(directions) == 1):
                 return directions
             
             elif pts in R and 'right' in directions:
@@ -113,7 +114,7 @@ def checkBody(directions, ourSnake):
     adjBlocks = adjCoords(ourSnake)
     i = 0
     if (len(directions) == 1):
-        return
+        return directions
 
     elif (adjBlocks[0] in ourSnake['coords'] and len(directions)>1):
         if 'right' in directions:
@@ -138,7 +139,7 @@ def checkWall(ourSnake, board_height, board_width, directions):
                 L.append(x)
     
     if (len(directions) == 1):
-        return
+        return directions
     else:
         if 0 in L and 'right' in directions and len(directions)>1:
             directions.remove('right')
@@ -152,14 +153,18 @@ def checkWall(ourSnake, board_height, board_width, directions):
         
     
 def firstCheck(directions, ourSnake, data):
+    print("YOLO SWAG" + " PURPLE DRAGON" + "\n THIS IS A LIST")
+    print(directions)
     directions = checkBody(directions, ourSnake)
+    print(directions)
     directions = checkWall(ourSnake, board_height, board_width, directions)
+    print("THIS IS THE LIST@@@@@@@@@@")
+    print(directions)
     directions = checkHeads(ourSnake, data, directions)
+    print("THIS IS THE LIST!!!@!@#!##$@$#")
+    print(directions)
     directions = checkBodies(ourSnake, data, directions)
-    if(len(directions)==1):
-        return directions[0]
-    else:
-        return directions
+    return directions
 
 def creategrid(data):
     grid = [[0 for col in range(data['width'])] for row in range(data['height'])]
