@@ -17,8 +17,8 @@ EMPTY = 0
 OUR_NAME = "boa-conscriptor"
 OUR_HEAD = 97
 
-board_width = 0
-board_height = 0
+#board_width = 0
+#board_height = 0
 
 def checkHeads(ourSnake, data, directions):
     buf = 3
@@ -149,7 +149,9 @@ def checkBody(directions, ourSnake):
             print(directions)
     return directions
         
-def checkWall(ourSnake, board_height, board_width, directions):
+def checkWall(ourSnake, data, directions):
+    board_width = data['width']
+    board_height = data['height']
     print("height, width")
     print(board_height)
     print(board_width)
@@ -183,7 +185,7 @@ def firstCheck(directions, ourSnake, data):
     print(directions)
     directions = checkBody(directions, ourSnake)
     print(directions)
-    directions = checkWall(ourSnake, board_height, board_width, directions)
+    directions = checkWall(ourSnake, data, directions)
     print("THIS IS THE LIST@@@@@@@@@@")
     print(directions)
     directions = checkHeads(ourSnake, data, directions)
