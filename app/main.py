@@ -218,7 +218,7 @@ def move():
     grid, ourSnake = creategrid(data)
     directions = firstCheck(directions, ourSnake, data)
     if len(directions) == 1:
-        mov = directions[0]
+        mov = directions
     else:
         mov = Elise.approachFood(grid, directions, ourSnake, data)
     
