@@ -82,12 +82,16 @@ def checkBodies(ourSnake, data, directions):
             
             elif pts in R and 'right' in directions:
                 directions.remove('right')
+                print "removing right from checkBodies"
             elif pts in L and 'left' in directions:
                 directions.remove('left')
+                print "removing left from checkBodies"
             elif pts in D and 'down' in directions:
                 directions.remove('down')
+                print "removing down from checkBodies"
             elif pts in U and 'up' in directions:
                 directions.remove('up')
+                print "removing up from checkBodies"
     return directions
 
 def adjDirection(headPos,bodyPos):
@@ -161,12 +165,16 @@ def checkWall(ourSnake, board_height, board_width, directions):
     else:
         if 0 in L and 'right' in directions and len(directions)>1:
             directions.remove('right')
+            print "removing right from checkWall"
         if 1 in L and 'left' in directions and len(directions)>1:
             directions.remove('left')
+            print "removing left from checkWall"
         if 2 in L and 'down' in directions and len(directions)>1:
             directions.remove('down')
+            print "removing down from checkWall"
         if 3 in L and 'up' in directions and len(directions)>1:
             directions.remove('up')
+            print "removing up from checkWall"
         return directions
         
     
