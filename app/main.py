@@ -72,7 +72,7 @@ def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i
     return L, R, U, D
 
 def checkBodies(ourSnake, data, directions):
-    buf = 1
+    buf = 2
     L, R, U, D = varAdjCoords(ourSnake, buf)
     for snakes in data['snakes']:
         for pts in snakes['coords']:
