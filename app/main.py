@@ -30,12 +30,16 @@ def checkHeads(ourSnake, data, directions):
             
         elif snakes['coords'][0] in R and 'right' in directions:
             directions.remove('right')
+            print "removing right from checkHeads"
         elif snakes['coords'][0] in L and 'left' in directions:
             directions.remove('left')
+            print "removing left from checkHeads"
         elif snakes['coords'][0] in D and 'down' in directions:
             directions.remove('down')
+            print "removing down from checkHeads"
         elif snakes['coords'][0] in U and 'up' in directions:
             directions.remove('up')
+            print "removing up from checkHeads"
     return directions
 
 def varAdjCoords(ourSnake, i): #returns a list of coordinates at a distance of i from our snake head
@@ -226,7 +230,8 @@ def move():
         mov = Elise.approachFood(grid, directions, ourSnake, data)
     
     print(grid)
-    print("This is our current move:" + mov)
+    print("This is our current move:")
+    print(mov)
 
     return json.dumps({
         'move': mov,
